@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Remediation Lab</title>
+</head>
+<body>
+    <h1>XSS Remediation Demonstration</h1>
+
+    <input id="userInput" placeholder="Enter test input">
+    <button onclick="testInput()">Test Input</button>
+
+    <h2>Unsafe Output</h2>
+    <div id="unsafeOutput"></div>
+
+    <h2>Safe Output</h2>
+    <div id="safeOutput"></div>
+
+    <script>
+        function testInput() {
+            const input =
+                document.getElementById("userInput").value;
+
+            // Vulnerable: interprets input as HTML
+            document.getElementById("unsafeOutput")
+                .innerHTML = input;
+
+            // Secure: displays input as plain text
+            document.getElementById("safeOutput")
+                .textContent = input;
+        }
+    </script>
+</body>
+</html>
